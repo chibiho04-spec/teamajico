@@ -11,6 +11,9 @@
   --cream-dark: #e9cfb6;
   --coral: #fe9e9e;
   --coral-dark: #fc5d43;
+  --coral-text: #b8381f;   /* 小さい文字用（クリーム背景でコントラスト4.5以上） */
+  --btn-mint: #1a7a64;     /* ボタン背景（白文字でコントラスト5以上） */
+  --btn-coral: #c94a2e;
   --ink: #333;
   --ink-soft: #666;
   --white: #fff;
@@ -22,7 +25,7 @@
 
 /* ---------- リセット ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { font-size: 100%; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; }   /* smooth は #asami への着地がずれるので使わない */
 body {
   margin: 0;
   font-family: var(--sans);
@@ -58,13 +61,13 @@ button { font: inherit; }
   min-height: var(--header-h);
 }
 .site-header__logo { display: block; line-height: 0; flex: 0 0 auto; }
-.site-header__logo img { height: 54px; width: auto; }
+.site-header__logo img { height: 46px; width: auto; }
 .site-nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; justify-content: flex-end; margin-left: auto; }
 .site-nav a {
   display: block;
-  padding: 10px 6px;
+  padding: 10px 4px;
   font-family: var(--serif);
-  font-size: min(0.85rem, 3.6vw);   /* 文字150%でも3項目が1行に収まるよう画面幅で上限 */
+  font-size: min(0.85rem, 3.5vw);   /* 文字150%でも3項目が1行に収まるよう画面幅で上限 */
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
@@ -72,8 +75,8 @@ button { font: inherit; }
   white-space: nowrap;
   border-bottom: 2px solid transparent;
 }
-.site-nav a[aria-current="page"] { border-bottom-color: var(--coral-dark); color: var(--coral-dark); }
-.site-nav a:hover { color: var(--coral-dark); }
+.site-nav a[aria-current="page"] { border-bottom-color: var(--coral-dark); color: var(--coral-text); }
+.site-nav a:hover { color: var(--coral-text); }
 
 /* ---------- フッター ---------- */
 .site-footer {
@@ -84,8 +87,8 @@ button { font: inherit; }
 }
 .site-footer__logo img { height: 56px; width: auto; margin: 0 auto 12px; }
 .site-footer__links { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 12px; }
-.site-footer__links a { font-size: 0.95rem; color: var(--mint-deep); text-decoration: none; letter-spacing: 0.06em; }
-.site-footer__links a:hover { color: var(--coral-dark); }
+.site-footer__links a { display: inline-block; padding: 10px 4px; font-size: 0.95rem; color: var(--mint-deep); text-decoration: none; letter-spacing: 0.06em; }
+.site-footer__links a:hover { color: var(--coral-text); }
 .site-footer__copy { font-family: var(--serif); font-size: 0.8rem; color: var(--ink-soft); letter-spacing: 0.06em; }
 
 /* ---------- 帯とシート ---------- */
@@ -112,7 +115,7 @@ button { font: inherit; }
   margin-bottom: 24px;
 }
 .band--mint .h-serif { color: var(--white); }
-.h-serif small { display: block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.2em; color: var(--coral-dark); margin-top: 6px; }
+.h-serif small { display: block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.2em; color: var(--coral-text); margin-top: 6px; }
 .band--mint .h-serif small { color: var(--cream); }
 
 .h-stamp {
@@ -123,7 +126,7 @@ button { font: inherit; }
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: 0.1em;
-  color: var(--coral-dark);
+  color: var(--coral-text);
   margin-bottom: 12px;
 }
 .h-stamp::before {
@@ -147,17 +150,19 @@ button { font: inherit; }
   min-height: 52px;
   padding: 12px 28px;
   border-radius: 999px;
-  background: var(--mint-dark);
+  background: var(--btn-mint);
   color: var(--white);
   font-weight: 700;
   font-size: 1rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   letter-spacing: 0.08em;
   text-decoration: none;
   box-shadow: 0 3px 0 rgba(0,0,0,.12);
   transition: transform .15s, box-shadow .15s;
 }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 0 rgba(0,0,0,.14); }
-.btn--coral { background: var(--coral-dark); }
+.btn--coral { background: var(--btn-coral); }
 .btn--outline { background: var(--white); color: var(--mint-deep); border: 2px solid var(--mint-dark); box-shadow: none; }
 .btn--block { display: flex; width: 100%; }
 .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
@@ -200,7 +205,9 @@ button { font: inherit; }
 /* ---------- 印刷 ---------- */
 @media print {
   body { background: #fff; color: #000; }
-  .site-header, .site-footer, .parts, .btn, .insta { display: none !important; }
+  .site-header, .site-footer, .parts, .insta, .btn-row { display: none !important; }
+  .contact-card .btn { display: block; background: none; color: #000; box-shadow: none; }
+  .credits { columns: 1 !important; }
   .band { background: none !important; color: #000 !important; }
   .h-serif, .h-stamp { color: #000 !important; }
   a { color: #000; text-decoration: none; }
@@ -231,13 +238,17 @@ button { font: inherit; }
   filter: drop-shadow(0 0 6px rgba(255,255,255,.95)) drop-shadow(0 3px 2px rgba(0,0,0,.15));
 }
 .hero__tag {
-  display: inline-block;
+  position: absolute;          /* 看板の幅に縛られず中央に置く（右端が切れないように） */
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  max-width: 90vw;
   margin-top: 6px;
   padding: 3px 12px;
   background: rgba(255,255,255,.9);
   border-radius: 999px;
   font-family: var(--serif);
-  font-size: min(0.7rem, 2.9vw);
+  font-size: min(0.7rem, 2.6vw);
   letter-spacing: 0.22em;
   color: var(--mint-deep);
   white-space: nowrap;
@@ -259,13 +270,14 @@ button { font: inherit; }
 }
 .member img { width: 72%; max-width: 150px; height: auto; margin: 0 auto 8px; transition: transform .2s; }
 .member:hover img { transform: translateY(-4px) rotate(-1deg); }
-.member__role { display: block; font-family: var(--serif); font-size: 0.8rem; letter-spacing: 0.18em; color: var(--coral-dark); }
+.member__role { display: block; font-family: var(--serif); font-size: 0.8rem; letter-spacing: 0.18em; color: var(--coral-text); }
 .member__name { display: block; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.08em; }
 .member__name small { display: block; font-weight: 400; font-size: 0.8rem; color: var(--ink-soft); letter-spacing: 0.1em; }
 
 /* Instagram 埋め込み */
 .insta {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* 長い文字列に引っ張られて広がらないように */
   gap: 32px;
   max-width: 600px;
   margin: 0 auto;
@@ -287,7 +299,7 @@ button { font: inherit; }
   width: 600px; height: 560px; border: 0;
   transform-origin: top left;
 }
-.insta__name { display: block; margin-bottom: 10px; font-family: var(--serif); letter-spacing: 0.1em; color: var(--white); }
+.insta__name { display: inline-block; margin-bottom: 10px; padding: 4px 18px; border-radius: 999px; background: var(--cream); font-family: var(--serif); letter-spacing: 0.1em; color: var(--mint-deep); }
 
 /* WORKS の入口 */
 .works-peek {
@@ -304,14 +316,14 @@ button { font: inherit; }
   .hero__tag { font-size: 0.85rem; }
   .members { gap: 40px; max-width: 640px; }
   .member img { max-width: 170px; }
-  .insta { grid-template-columns: 1fr 1fr; max-width: 1000px; gap: 40px; }
+  .insta { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1000px; gap: 40px; }
   .works-peek { gap: 12px; }
 }
 
 /* ==========================================================
    PROFILE
    ========================================================== */
-.person { scroll-margin-top: calc(var(--header-h) + 8px); }
+.person { scroll-margin-top: calc(var(--header-h) + 16px); }
 .person .h-serif { text-align: left; margin-bottom: 20px; }
 .person__ribbon { width: 150px; height: auto; margin-bottom: 8px; }
 .person .h-stamp { margin-top: 28px; }
@@ -329,11 +341,11 @@ button { font: inherit; }
 .snaps { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
 .snaps figure { width: calc(50% - 6px); max-width: 220px; }
 .snaps img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
-.snaps figcaption { font-size: 0.8rem; color: var(--ink-soft); line-height: 1.5; margin-top: 4px; }
+.snaps figcaption { font-size: 0.875rem; color: #555; line-height: 1.5; margin-top: 4px; }
 
-.credits { list-style: disc; padding-left: 1.3em; font-size: 0.95rem; line-height: 1.7; }
+.credits { list-style: disc; padding-left: 1.3em; font-size: 1rem; line-height: 1.7; }
 .credits li { margin-bottom: 8px; break-inside: avoid; }
-.credits__year { font-size: 0.85em; color: var(--ink-soft); white-space: nowrap; }
+.credits__year { font-size: 0.9em; color: #555; white-space: nowrap; }
 
 @media (min-width: 768px) {
   .person .h-serif { font-size: 2.2rem; }
@@ -387,7 +399,7 @@ button { font: inherit; }
 
 @media (min-width: 768px) {
   .gallery { grid-template-columns: repeat(4, 1fr); gap: 14px; }
-  .lb__stage { padding: 24px 80px; }
+  .lb__stage { padding: 24px 110px; }
   .lb__prev, .lb__next { position: absolute; top: 50%; transform: translateY(-50%); }
   .lb__prev { left: 16px; }
   .lb__next { right: 16px; }
@@ -411,7 +423,7 @@ button { font: inherit; }
   font-weight: 500;
   font-size: 0.85rem;
   letter-spacing: 0.18em;
-  color: var(--coral-dark);
+  color: var(--coral-text);
   line-height: 1.4;
   margin-bottom: 4px;
 }

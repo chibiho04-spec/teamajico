@@ -1,9 +1,12 @@
-# 元データ（容量が大きい・権利物）はコミットしない
-logo/
-素材/
-現サイト調査/
+# 元データ（容量が大きい・権利物）はコミットしない。先頭の "/" でリポジトリ直下だけに効かせる
+# （"logo/" と書くと assets/img/logo/ まで無視されてしまう）
+/logo/
+/素材/
+/現サイト調査/
 # 確認用スクショ・作業メモ
-docs/screenshots/
-.superpowers/
-# macOS
+/docs/screenshots/
+/.superpowers/
+# macOS / 作業中の重複ファイル
 .DS_Store
+* 2.jpg
+* 2.png

@@ -89,7 +89,8 @@
     });
     // 横スワイプで前後（40px以上）
     var sx = null;
-    lb.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchstart', function (e) { sx = e.touches.length > 1 ? null : e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchmove', function (e) { if (e.touches.length > 1) sx = null; }, { passive: true });   // 二本指（ピンチ）はスワイプ扱いしない
     lb.addEventListener('touchend', function (e) {
       if (sx === null) return;
       var dx = e.changedTouches[0].clientX - sx;
