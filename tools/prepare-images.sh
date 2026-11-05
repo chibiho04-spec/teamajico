@@ -9,6 +9,7 @@ OUT="assets/img"
 SPRITE="$SRC/トップ/sprite-s4c4489049a.png"
 
 mkdir -p "$OUT/logo" "$OUT/hero" "$OUT/parts" "$OUT/profile" "$OUT/works/thumb" "$OUT/works/large"
+rm -f "$OUT/parts/"* "$OUT/profile/"* "$OUT/works/thumb/"* "$OUT/works/large/"*   # 作り直し（sips が「 2.jpg」を作ることがあるため）
 
 # --- ロゴ（.ai → 透過PNG）---
 if [ ! -f "$OUT/logo/logo.png" ]; then
@@ -24,8 +25,8 @@ crop() {
   # sips の -c は中央基準なので、--cropOffset で左上を指定する（順序: cropOffset → cropToHeightWidth）
   sips --cropOffset "$y" 0 -c "$h" "$w" "$SPRITE" --out "$OUT/parts/$name.png" >/dev/null
 }
-crop frame-asami     0    140 235
-crop frame-chie      235  150 240
+crop frame-asami     1    140 234   # y=0 は sips が「未指定」と扱うので 1 から
+sips --cropOffset 235 8 -c 240 142 "$SPRITE" --out "$OUT/parts/frame-chie.png" >/dev/null   # 左端8pxの白い筋を除く
 crop lace-asami      475  170 167
 crop flower-chie     642  170 167
 crop rainbow-girl    809  140 190

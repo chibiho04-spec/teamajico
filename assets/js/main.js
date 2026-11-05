@@ -20,7 +20,7 @@
       if (!iframe) continue;
       var scale = Math.min(1, w / 600);
       iframe.style.transform = 'scale(' + scale + ')';
-      f.style.height = Math.round(700 * scale) + 'px';
+      f.style.height = Math.round(560 * scale) + 'px';
     }
   }
   fitInstagram();

@@ -28,9 +28,9 @@ shot() { # 幅 高さ クエリ 出力名
     rm -f "$host"
   fi
 }
-shot 390  2400 ""        "$NAME-sp-100"
-shot 390  2400 "?fs=150" "$NAME-sp-150"
-shot 1280 2400 ""        "$NAME-pc-100"
-shot 1280 2400 "?fs=150" "$NAME-pc-150"
-shot 320  2000 ""        "$NAME-320"
+shot 390  3600 ""        "$NAME-sp-100"
+shot 390  4200 "?fs=150" "$NAME-sp-150"
+shot 1280 2800 ""        "$NAME-pc-100"
+shot 1280 3200 "?fs=150" "$NAME-pc-150"
+shot 320  3600 ""        "$NAME-320"
 ls -1 "$OUT" | grep "^$NAME-" | sed "s|^|$OUT/|"
