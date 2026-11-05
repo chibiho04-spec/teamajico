@@ -30,7 +30,7 @@ INTERNAL = ["CLAUDE.md", "CLAUDE.html", "STATUS.md", "tools/ogp.html", "tools/sc
             "docs/specs/2026-11-05-新サイト設計.md", "docs/plans/2026-11-05-新サイト実装計画.md"]
 SECRET = (r"ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}"
           r"|BEGIN [A-Z ]*PRIVATE KEY|(password|passwd|api[_-]?key|secret)[\"' ]*[:=][\"' ]*[^\s\"']{6,}")
-FORBIDDEN = ("logo/", "素材/", "現サイト調査/", "docs/screenshots/", ".superpowers/", "STATUS.md", "期限メモ.txt")
+FORBIDDEN = ("logo/", "素材/", "現サイト調査/", "docs/screenshots/", ".superpowers/", "STATUS.md", "期限メモ.txt", "team-ajico/")
 
 ng = warn = 0
 
