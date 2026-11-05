@@ -1,0 +1,9 @@
+# 元データ（容量が大きい・権利物）はコミットしない
+logo/
+素材/
+現サイト調査/
+# 確認用スクショ・作業メモ
+docs/screenshots/
+.superpowers/
+# macOS
+.DS_Store
