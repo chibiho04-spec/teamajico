@@ -10,6 +10,22 @@
 - `logo/`・`素材/`・`現サイト調査/` はコミットしない（.ai が345MBあり GitHub の上限を超える。元データは手元に残す）。
 - 外部に頼るのは Google Fonts と Instagram の埋め込み（`instagram.com/<user>/embed/`）だけ。ライブラリ（jQuery等）禁止。
 
+## 安全管理（Shin は運用の初心者。Claude が気をつける）
+- **push の前に必ず** `python3 tools/site-check.py --local`。NG があれば push しない。作業の区切りでは `python3 tools/site-check.py` で公開サイトとDNSも見る。
+- **このリポジトリは Public。** パスワード・鍵・サーバーの弱点・契約情報・個人のメールアドレスを、コード・コメント・docs・コミット文のどこにも書かない。`STATUS.md` と `期限メモ.txt` は手元だけ（.gitignore 済み）。
+- `_config.yml` の `exclude` で内部資料を公開ページから外している。ただし github.com では読めるので、秘密を置いてよい場所にはならない。
+- ログイン情報はチャットに貼らせない。アカウント作成・パスワード入力・DNSや契約の変更は Shin が行い、Claude は手順と確認を担当する。
+- 写真を足すときは撮影場所の情報が残っていないか確認する（site-check が検出する）。
+- **DNS の変更は、変更前の全レコードを控えてから。** MX・SPF・DMARC を消すとメールが止まる。
+
+## ドメイン切替チェックリスト（未実施）
+1. サイトとメールのバックアップ、DNS の全レコードの控えを取る。
+2. GitHub のアカウント設定でドメインを検証する（他人に使われるのを防ぐ）。検証用の TXT は消さない。
+3. DNS を編集できる場所を確認する。置き場を移すときは MX・SPF・DMARC を移し先へ入れ直し、送受信を試す。ワイルドカードは GitHub に向けない。
+4. サイトの向き先を GitHub Pages へ変え、`CNAME` を追加し、「Enforce HTTPS」をオンにする。
+5. `og:image` と `tools/site-check.py` の `BASE` を team-ajico.net に直し、`robots.txt` と `sitemap.xml` を追加する。
+6. 表示と送受信を確認してから、古い WordPress を停止する。メールの契約は残す。
+
 ## 画像
 - 元データ → `素材/`。サイトに載せるのは `assets/img/` の縮小版だけ。
 - 作り直すときは `bash tools/prepare-images.sh`（何度実行しても同じ結果）。

@@ -1,0 +1,7 @@
+# GitHub Pages の公開から外すもの（サイト本体に関係ない内部資料）
+# リポジトリ自体は Public なので github.com からは読める。秘密はここにも書かないこと。
+exclude:
+  - CLAUDE.md
+  - STATUS.md
+  - docs
+  - tools

@@ -416,6 +416,7 @@ button { font: inherit; }
   box-shadow: 0 4px 14px rgba(0,0,0,.08);
   display: grid;
   gap: 10px;
+  align-content: start;
 }
 .contact-card__name {
   text-align: center;
@@ -429,7 +430,7 @@ button { font: inherit; }
 }
 .contact-card__name strong { display: block; font-family: var(--sans); font-size: 1.3rem; letter-spacing: 0.1em; color: var(--ink); margin-top: 2px; }
 .contact-card__name small { display: block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.12em; color: var(--ink-soft); }
-.contact-card .btn { font-size: 1.05rem; overflow-wrap: anywhere; min-width: 0; padding-left: 16px; padding-right: 16px; }
+.contact-card .btn { font-size: 1.05rem; overflow-wrap: anywhere; min-width: 0; padding-left: 18px; padding-right: 18px; border-radius: 26px; text-align: center; }
 
 @media (min-width: 768px) {
   .contact-list { grid-template-columns: 1fr 1fr; gap: 32px; }
