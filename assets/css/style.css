@@ -340,3 +340,55 @@ button { font: inherit; }
   .credits { columns: 2; column-gap: 40px; }
   .snaps figure { width: 220px; }
 }
+
+/* ==========================================================
+   WORKS
+   ========================================================== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+.gallery li { margin: 0; }
+.gallery a { display: block; border-radius: 6px; overflow: hidden; background: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,.12); transition: transform .15s; }
+.gallery a:hover { transform: translateY(-3px); }
+.gallery img { width: 100%; height: auto; display: block; }
+
+.thanks { display: flex; gap: 16px; align-items: flex-start; max-width: 720px; }
+.thanks__logo { flex: 0 0 107px; }
+.thanks__logo img { border: 1px solid var(--cream-dark); }
+.thanks__text a { font-weight: 700; color: var(--mint-deep); }
+.thanks__profile { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.6; margin-top: 4px; }
+
+/* 拡大表示 */
+.lb {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(0,0,0,.92);
+  display: flex; flex-direction: column;
+}
+.lb[hidden] { display: none; }
+.lb__stage { flex: 1 1 auto; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 8px; }
+.lb__img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,.6); }
+.lb__bar {
+  flex: 0 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(0,0,0,.6);
+}
+.lb__btn {
+  min-height: 48px; padding: 8px 14px;
+  border: 1px solid rgba(255,255,255,.5); border-radius: 999px;
+  background: transparent; color: #fff; font-size: 0.95rem; letter-spacing: 0.05em;
+  cursor: pointer;
+}
+.lb__btn:hover { background: rgba(255,255,255,.15); }
+.lb__count { color: #fff; font-family: var(--serif); letter-spacing: 0.1em; min-width: 4.5em; text-align: center; }
+
+@media (min-width: 768px) {
+  .gallery { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .lb__stage { padding: 24px 80px; }
+  .lb__prev, .lb__next { position: absolute; top: 50%; transform: translateY(-50%); }
+  .lb__prev { left: 16px; }
+  .lb__next { right: 16px; }
+}

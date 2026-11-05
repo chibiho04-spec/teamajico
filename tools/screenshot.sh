@@ -5,7 +5,7 @@
 # 注意: headless Chrome は窓幅を500px未満にできないため、500未満は iframe に入れて撮ってから切り抜く。
 set -eu
 cd "$(dirname "$0")/.."
-HTML=$1; NAME=$2; HASH=${3:-}
+HTML=$1; NAME=$2; HASH=${3:-}; FIXH=${4:-}   # 第4引数: 全パターンの高さを固定（拡大表示など画面いっぱいの確認用）
 OUT=docs/screenshots
 mkdir -p "$OUT"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
@@ -28,9 +28,9 @@ shot() { # 幅 高さ クエリ 出力名
     rm -f "$host"
   fi
 }
-shot 390  3600 ""        "$NAME-sp-100"
-shot 390  4200 "?fs=150" "$NAME-sp-150"
-shot 1280 2800 ""        "$NAME-pc-100"
-shot 1280 3200 "?fs=150" "$NAME-pc-150"
-shot 320  3600 ""        "$NAME-320"
+shot 390  ${FIXH:-3600} ""        "$NAME-sp-100"
+shot 390  ${FIXH:-4200} "?fs=150" "$NAME-sp-150"
+shot 1280 ${FIXH:-2800} ""        "$NAME-pc-100"
+shot 1280 ${FIXH:-3200} "?fs=150" "$NAME-pc-150"
+shot 320  ${FIXH:-3600} ""        "$NAME-320"
 ls -1 "$OUT" | grep "^$NAME-" | sed "s|^|$OUT/|"

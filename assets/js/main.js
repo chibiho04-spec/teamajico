@@ -97,6 +97,10 @@
       if (dx > 40) show(current - 1);
       else if (dx < -40) show(current + 1);
     }, { passive: true });
+
+    // 検証用：URL に ?lb=16 を付けると16枚目を開いた状態で表示
+    var lm = location.search.match(/[?&]lb=(\d+)/);
+    if (lm) open(Math.max(0, Math.min(links.length - 1, parseInt(lm[1], 10) - 1)));
   }
   initLightbox();
 })();
