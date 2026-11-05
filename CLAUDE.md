@@ -6,7 +6,7 @@
 ## 絶対ルール
 - **リンク・画像パスは相対パスのみ**（`../assets/...`）。`/` 始まりは禁止。ページへのリンクは `profile/index.html` のように **index.html まで書く**（file:// 直開きではフォルダ名だけだと一覧表示になってしまうため）。
 - 連絡先は **電話（2人の携帯）と Instagram DM の2つ**（Shin決定・本人の掲載了承済み 2026-11-05）。メールアドレスは載せない。電話番号を変えるときは `contact/index.html` の `tel:` と表示の両方を直す。
-- **GitHub に上げない**（Shin決定 2026-11-05）。イラスト・写真の使用許可と連絡先が揃ってから。それまでローカルコミットのみ。
+- 公開先は GitHub `chibiho04-spec/teamajico`（GitHub Pages、main ブランチ直下）。修正したら commit → push で即公開（sat系と同じ運用）。仮公開URL: https://chibiho04-spec.github.io/teamajico/ 。ドメイン切替後は og:image を https://team-ajico.net/... に直す。
 - `logo/`・`素材/`・`現サイト調査/` はコミットしない（.ai が345MBあり GitHub の上限を超える。元データは手元に残す）。
 - 外部に頼るのは Google Fonts と Instagram の埋め込み（`instagram.com/<user>/embed/`）だけ。ライブラリ（jQuery等）禁止。
 
@@ -22,6 +22,6 @@
 ## 公開前チェックリスト（未達）
 - [x] 連絡先（電話2人分・Instagram）が本物で、本人の掲載了承がある（2026-11-05）
 - [x] 部屋のイラスト・写真の使用許可（制作者・撮影者）（2026-11-05 Shin確認）
-- [ ] 4パターン確認・リンク確認を通している
-- [ ] `og:image` を公開URL（絶対URL）に差し替える
+- [x] 4パターン確認・リンク確認を通している（2026-11-05）
+- [x] `og:image` を公開URL（仮公開の github.io。ドメイン切替時に team-ajico.net へ）
 - [x] コミット作者のメールアドレスは GitHub の匿名アドレス（chibiho04-spec@users.noreply.github.com）に書き換え済み。このリポジトリの git 設定も同じアドレスにしてある（2026-11-05）
