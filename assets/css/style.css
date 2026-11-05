@@ -307,3 +307,36 @@ button { font: inherit; }
   .insta { grid-template-columns: 1fr 1fr; max-width: 1000px; gap: 40px; }
   .works-peek { gap: 12px; }
 }
+
+/* ==========================================================
+   PROFILE
+   ========================================================== */
+.person { scroll-margin-top: calc(var(--header-h) + 8px); }
+.person .h-serif { text-align: left; margin-bottom: 20px; }
+.person__ribbon { width: 150px; height: auto; margin-bottom: 8px; }
+.person .h-stamp { margin-top: 28px; }
+.person .text { margin-bottom: 8px; }
+
+.credits-group { margin-top: 24px; padding-top: 16px; border-top: 1px dashed var(--cream-dark); }
+.band--cream .credits-group { border-top-color: rgba(0,0,0,.12); }
+.credits-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.1em;
+  color: var(--mint-deep);
+  margin-bottom: 12px;
+}
+.snaps { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+.snaps figure { width: calc(50% - 6px); max-width: 220px; }
+.snaps img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,.15); }
+.snaps figcaption { font-size: 0.8rem; color: var(--ink-soft); line-height: 1.5; margin-top: 4px; }
+
+.credits { list-style: disc; padding-left: 1.3em; font-size: 0.95rem; line-height: 1.7; }
+.credits li { margin-bottom: 8px; break-inside: avoid; }
+.credits__year { font-size: 0.85em; color: var(--ink-soft); white-space: nowrap; }
+
+@media (min-width: 768px) {
+  .person .h-serif { font-size: 2.2rem; }
+  .credits { columns: 2; column-gap: 40px; }
+  .snaps figure { width: 220px; }
+}
