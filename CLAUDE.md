@@ -24,4 +24,4 @@
 - [x] 部屋のイラスト・写真の使用許可（制作者・撮影者）（2026-11-05 Shin確認）
 - [ ] 4パターン確認・リンク確認を通している
 - [ ] `og:image` を公開URL（絶対URL）に差し替える
-- [ ] コミット作者のメールアドレス（個人Gmail）を公開してよいか決める。隠すなら GitHub の「Keep my email addresses private」をオンにし、最初の push 前に作者情報を noreply に書き換える
+- [x] コミット作者のメールアドレスは GitHub の匿名アドレス（chibiho04-spec@users.noreply.github.com）に書き換え済み。このリポジトリの git 設定も同じアドレスにしてある（2026-11-05）
