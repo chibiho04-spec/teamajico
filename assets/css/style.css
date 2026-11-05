@@ -372,12 +372,12 @@ button { font: inherit; }
 .lb__img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; box-shadow: 0 0 30px rgba(0,0,0,.6); }
 .lb__bar {
   flex: 0 0 auto;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
+  display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;
   padding: 10px 8px calc(10px + env(safe-area-inset-bottom));
   background: rgba(0,0,0,.6);
 }
 .lb__btn {
-  min-height: 48px; padding: 8px 14px;
+  min-height: 48px; padding: 8px 14px; white-space: nowrap;
   border: 1px solid rgba(255,255,255,.5); border-radius: 999px;
   background: transparent; color: #fff; font-size: 0.95rem; letter-spacing: 0.05em;
   cursor: pointer;
@@ -391,4 +391,35 @@ button { font: inherit; }
   .lb__prev, .lb__next { position: absolute; top: 50%; transform: translateY(-50%); }
   .lb__prev { left: 16px; }
   .lb__next { right: 16px; }
+}
+
+/* ==========================================================
+   CONTACT
+   ========================================================== */
+.contact-list { display: grid; gap: 20px; max-width: 760px; margin: 32px auto 0; }
+.contact-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 20px 16px 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+  display: grid;
+  gap: 10px;
+}
+.contact-card__name {
+  text-align: center;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  color: var(--coral-dark);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.contact-card__name strong { display: block; font-family: var(--sans); font-size: 1.3rem; letter-spacing: 0.1em; color: var(--ink); margin-top: 2px; }
+.contact-card__name small { display: block; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.12em; color: var(--ink-soft); }
+.contact-card .btn { font-size: 1.05rem; overflow-wrap: anywhere; min-width: 0; padding-left: 16px; padding-right: 16px; }
+
+@media (min-width: 768px) {
+  .contact-list { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .contact-card { padding: 28px 24px 24px; }
 }
